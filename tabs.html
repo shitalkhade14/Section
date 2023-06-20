@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Tabs</title>
+</head>
+<body>
+  <div class="mytabs">
+    <input type="radio" id="tekvision" name="mytabs" checked="checked">
+    <label for="tekvision"tabindex="0">Tekvision</label>
+    
+    <div class="tab">
+      <h2>Tekvision</h2>
+      <p>"No challenge is impossible
+        Inspired by Passion, Driven by Values."<br>
+        <br>
+        Accessibility
+        lets you reach more users.
+      
+      This means widening your customer base or more page visits to your site.
+      
+      How does this work?
+      
+      Through Digital Inclusion!</p>
+    </div>
+
+    <input type="radio" id="w3school" name="mytabs">
+    <label for="w3school"tabindex="0">W3school</label>
+    <div class="tab">
+      <h2>W3school</h2>
+      <p>"W3Schools is a freemium educational website for learning coding online."<br>
+        <br>Initially released in 1998, it derives its name from the World Wide Web but is not affiliated with the W3 Consortium. W3Schools offers courses covering all aspects of web development. W3Schools also publishes free HTML templates.</p>
+    </div>
+
+    <input type="radio" id="google" name="mytabs">
+    <label for="google"tabindex="0">Google</label>
+    <div class="tab">
+      <h2>Google</h2>
+      <p> Search the world's information, including webpages, images, videos and more. Google has many special features to help you find exactly what you're looking ..</p>
+    </div>
+
+  </div>
+</body>
+</html>
+
+<style>
+  body {
+    background: #ccc;
+    font-family: 'Roboto', sans-serif;
+}
+.mytabs {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 25px;
+}
+.mytabs input[type="radio"] {
+    display: none;
+}
+.mytabs label {
+    padding: 25px;
+    background: #e2e2e2;
+    font-weight: bold;
+}
+
+.mytabs .tab {
+    width: 100%;
+    padding: 20px;
+    background: #fff;
+    order: 1;
+    display: none;
+}
+.mytabs .tab h2 {
+    font-size: 3em;
+}
+
+.mytabs input[type='radio']:checked + label + .tab {
+    display: block;
+}
+
+.mytabs input[type="radio"]:checked + label {
+    background: #fff;
+}
+</style>
