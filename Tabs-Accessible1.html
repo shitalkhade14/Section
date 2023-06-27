@@ -55,16 +55,15 @@
 
 <div id="Tabs">
 
-<button role="Tabs" onclick="showcontent(1)">Tekvision</button>
+<button role="Tab" aria-selected="true" onclick="showcontent(1)">Tekvision</button>
 
-<button role="Tabs" onclick="showcontent(2)">W3school</button>
+<button role="Tab"aria-selected="false" onclick=" showcontent(2)">W3school</button>
 
-<button role="Tabs" onclick="showcontent(3)">Google</button>
+<button role="Tab" aria-selected="false" onclick="showcontent(3)">Google</button>
 
 </div>
 
 <div id="content1">
-<div class="tab" role="tab">
 
 <h1>Tekvision</h1>
 
@@ -117,54 +116,40 @@
         </div>
 
 
-
-
-    </div>
-
     <script>
+  function showcontent(tabno) {
+    let a = document.getElementById("content1");
+    let b = document.getElementById("content2");
+    let c = document.getElementById("content3");
+    let tabButtons = document.querySelectorAll("#Tabs button");
 
-        function showcontent(tabno){
+    
+    tabButtons.forEach((button, index) => {
+    button.setAttribute("aria-selected", tabno === index + 1);
+    });
+    
 
-            let a=document.getElementById("content1");
 
-            let b=document.getElementById("content2");
-
-            let c=document.getElementById("content3");
-
-            if(tabno===1){
-
-                a.style.display="block";
-
-                b.style.display="none";
-
-                c.style.display="none";
-
-            }
-
-            else if(tabno===2){
-
-                a.style.display="none";
-
-                b.style.display="block";
-
-                c.style.display="none";
-
-            }
-
-            else if(tabno===3){
-
-                a.style.display="none";
-
-                b.style.display="none";
-
-                c.style.display="block";
-
-                 
-
-        }}
-
-    </script>
+    if (tabno === 1) {
+      a.style.display = "block";
+      b.style.display = "none";
+      c.style.display = "none";
+    } else if (tabno === 2) {
+      a.style.display = "none";
+      b.style.display = "block";
+      c.style.display = "none";
+    } else if (tabno === 3) {
+      a.style.display = "none";
+      b.style.display = "none";
+      c.style.display = "block";
+    }
+  }
+</script>
 
 </body>
+</html> 
 
-</html>
+
+
+
+
