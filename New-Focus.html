@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <body style="text-align:center;">
+      <h1 style="color:rgb(1, 13, 1);">
+        Accessible Tabs
+      </h1>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Accessible Tabs</title>
+
+</head>
+
+
+<body>
+
+  <style>
+      body {
+        background-color: rgb(27, 178, 171);
+      } 
+</style>
+
+<style>
+
+  #content1 {
+
+    display: none;
+
+  }
+
+
+
+
+  #content2 {
+
+    display: none;
+
+  }
+
+
+
+
+  #content3 {
+
+    display: none;
+
+  }
+
+</style>
+
+
+
+
+<body>
+
+  <div class="tabs" id="tabs">
+
+    <button id="Tab1" aria-labelledby="Tekvision" tabindex="0" class="Tab" onclick="tabClick(1)"  role="tab" aria-selected="true">Tekvision</button>
+
+    <button id="Tab2"  aria-labelledby="W3school" tabindex="-1" class="Tab" onclick="tabClick(2)"  role="tab" aria-selected="false">W3school</button>
+
+    <button id="Tab3"   aria-labelledby="Google" tabindex="-1" class="Tab" onclick="tabClick(3)"  role="tab" aria-selected="false">Google</button>
+
+  </div>
+
+
+
+
+  <div id="content1">
+
+    <h2>Tekvion</h2>
+
+    <p>"No challenge is impossible
+
+      Inspired by Passion, Driven by Values."<br><br>
+  
+      Accessibility lets you reach more users.<br><br>
+  
+      This means widening your customer base or more page visits to your site.<br><br>
+  
+      How does this work?<br><br>
+  
+      Through Digital Inclusion!</p>
+
+  </div>
+
+
+
+
+  <div id="content2">
+
+    <h2>W3school</h2>
+
+    <p>"W3Schools is a freemium educational website for learning coding online."<br><br>
+
+      Initially released in 1998, it derives its name from the World Wide Web but is not affiliated with the
+
+      W3 Consortium. W3Schools offers courses covering all aspects of web development. W3Schools also
+
+      publishes free HTML templates.</p>
+
+  </div>
+
+
+
+
+  <div id="content3">
+
+    <h2>Google</h2>
+
+    <p>Search the world's information, including webpages, images, videos and more. Google has many special
+
+      features to help you find exactly what you're looking for.</p>
+
+  </div>
+
+
+
+
+  <script>
+
+    function tabClick(tabNumber) {
+
+      let x = document.getElementById("content1");
+
+      let y = document.getElementById("content2");
+
+      let z = document.getElementById("content3");
+
+      let a = document.getElementById("Tab1");
+
+      let b = document.getElementById("Tab2");
+
+      let c = document.getElementById("Tab3");
+
+      let tab1=document.getElementById("Tab1");
+
+      let tab2=document.getElementById("Tab2");
+
+      let tab3=document.getElementById("Tab3");
+
+     
+
+      x.style.display = "none";
+
+      y.style.display = "none";
+
+      z.style.display = "none";
+
+      a.setAttribute("aria-selected", "false");
+
+      b.setAttribute("aria-selected", "false");
+
+      c.setAttribute("aria-selected", "false");
+
+      tab1.setAttribute("tabindex", "-1");
+
+      tab2.setAttribute("tabindex", "-1");
+
+      tab3.setAttribute("tabindex", "-1");
+
+
+
+
+
+      if (tabNumber === 1) {
+
+        x.style.display = "block";
+
+        a.setAttribute("aria-selected", "true");
+
+        tab1.setAttribute("tabindex", "0");
+
+      } else if (tabNumber === 2) {
+
+        y.style.display = "block";
+
+        b.setAttribute("aria-selected", "true");
+
+        tab2.setAttribute("tabindex", "0");
+
+      } else if (tabNumber === 3) {
+
+        z.style.display = "block";
+
+        c.setAttribute("aria-selected", "true");
+
+        tab3.setAttribute("tabindex", "0");
+
+      }
+
+    }
+
+
+
+
+    const tabs = document.getElementById("tabs");
+
+
+
+
+    tabs.addEventListener("keydown", e => {
+
+      if (e.key === "ArrowRight") {
+
+        if (e.target.parentElement.nextElementSibling) {
+
+          e.target.nextElementSibling.focus();
+
+        }
+
+      } else if (e.key === "ArrowLeft") {
+
+        if (e.target.parentElement.nextElementSibling) {
+
+          e.target.previousElementSibling.focus();
+
+        }
+
+      }
+
+    });
+
+  </script>
+
+</body>
+
+
+
+
+</html>
+
