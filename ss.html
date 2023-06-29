@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessible Dropdown List</title>
+  <style>
+    body {
+      background-color: rgb(27, 178, 171);
+      text-align: center;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown select {
+      appearance: none;
+      outline: none;
+      padding: 8px 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .dropdown::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-top-color: #333;
+    }
+
+    .dropdown-options {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      max-height: 200px;
+      overflow-y: auto;
+      z-index: 1;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+
+    .dropdown-options.open {
+      display: block;
+    }
+
+    .dropdown-option {
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    .dropdown-option:hover {
+      background-color: #f5f5f5;
+    }
+  </style>
+</head>
+<body>
+  <h1>Accessible Dropdown List</h1>
+
+  <div class="dropdown">
+    <select id="dropdownSelect" aria-label="Select an Branch">
+      <option value="">Select an Branch</option>
+      <option value="option1">IT</option>
+      <option value="option2">Computer</option>
+      <option value="option3">Electronics</option>
+      <option value="option4">Mechanical</option>
+    </select>
+    <div class="dropdown-options" id="dropdownOptions">
+      <div class="dropdown-option" tabindex="0" role="option" data-value="">Select an Branch</div>
+      <div class="dropdown-option" tabindex="0" role="option" data-value="IT">IT</div>
+      <div class="dropdown-option" tabindex="0" role="option" data-value="Computer">Computer</div>
+      <div class="dropdown-option" tabindex="0" role="option" data-value="Electronics">Electronics</div>
+      <div class="dropdown-option" tabindex="0" role="option" data-value="">Mechanical</div>
+    </div>
+  </div>
+
+  <script>
+    const select = document.getElementById('dropdownSelect');
+    const options = document.getElementById('dropdownOptions');
+    const dropdownOptions = options.getElementsByClassName('dropdown-option');
+
+    select.addEventListener('focus', function () {
+      options.classList.add('open');
+    });
+
+    select.addEventListener('blur', function () {
+      options.classList.remove('open');
+    });
+
+    Array.from(dropdownOptions).forEach(function (option) {
+      option.addEventListener('click', function () {
+        const value = this.getAttribute('data-value');
+        const text = this.innerText;
+        select.value = value;
+        select.focus();
+        options.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
