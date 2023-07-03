@@ -1,24 +1,47 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-<link rel="stylesheet" href="Listbox.css">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accessible Listbox</title>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>List Box</title>
+
+</head>
+
+<body>
+
+    <label><h1>Choose your favorite color.</h1></label>
   
-  <body>    
-<br>  
-<br>  
-<label for="my-listbox">Select an Branch:</label>
-<script type="text/javascript" src="Listbox.js"></script>
-<select name="Branch" size="5" multiple="multiple">  
-    <option value="IT"> IT</option>  
-    <option value="Computer"> Computer </option>  
-    <option value="Electronics">Electronics</option>  
-    <option value="Mechanical">Mechanical </option>  
-    <option value="Automobile"> Automobile</option>  
-    <option value="Civil">Civil</option>  
-</select>  
-</body>    
-</html>    
+    <span id="colors-list"></span>
+
+    <div role="listbox" id="listbox" aria-label="colorlist">
+
+        <br>
+
+        <div role="listbox"   class="colorlist">
+
+            <div role="option" aria-selected="true" tabindex="0">IT</div>
+
+            <div role="option" aria-selected="false" tabindex="-1">Computer</div>
+
+            <div role="option" aria-selected="false" tabindex="-1">Electronics</div>
+
+            <div role="option" aria-selected="false" tabindex="-1">Mechanical</div>
+
+            <div role="option" aria-selected="false" tabindex="-1">Automobile</div>
+
+            <div role="option" aria-selected="false" tabindex="-1">Civil</div>
+
+            <div role="option" aria-selected="false" tabindex="-1">E&Tc</div>
+
+        </div>
+
+        <script src="Listbox.js"></script>
+
+</body>
+
+</html>
