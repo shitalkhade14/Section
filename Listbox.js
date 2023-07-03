@@ -7,16 +7,6 @@ const listbox = document.getElementById("listbox");
 
                 const currentOption = event.target;
 
-
-
-
-                   
-
-
-
-
-                // accessible with arrow keys
-
                 if (event.key === "ArrowUp") {
 
                     event.preventDefault();
@@ -26,32 +16,21 @@ const listbox = document.getElementById("listbox");
                         //accessible with arrow keys arrow up selected
 
 
-
-
                        const previousElement=currentOption.previousElementSibling;
-
-
-
 
                        previousElement.setAttribute("aria-selected","true");
 
                        previousElement.setAttribute("tabindex","0");
 
-
-
-
                        currentOption.setAttribute("aria-selected","false");
 
-                    currentOption.setAttribute("tabindex","-1");
-
-
+                       currentOption.setAttribute("tabindex","-1");
 
 
                        // currentOption.previousElementSibling.focus();
 
                        previousElement.focus();
 
-                       
 
                     } else {
 
@@ -68,8 +47,6 @@ const listbox = document.getElementById("listbox");
                     if (currentOption.nextElementSibling) {
 
 
-
-
                         //accessible with arrow down option is selected
 
                         const nextElement=currentOption.nextElementSibling;
@@ -78,18 +55,12 @@ const listbox = document.getElementById("listbox");
 
                         nextElement.setAttribute("tabindex","0");
 
-
-
-
                         currentOption.setAttribute("aria-selected","false");
 
                         currentOption.setAttribute("tabindex","-1");
 
 
-
-
-
-                        nextElement.focus();
+               nextElement.focus();
 
                     } else {
 
