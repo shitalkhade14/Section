@@ -1,27 +1,33 @@
-  <!DOCTYPE html>
-
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>List Box</title>
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessible Listbox</title>
+  <style>
+    body {
+      background-color: rgb(27, 178, 171);
+      text-align: center;
+    }
+    #content1, #content2, #content3 {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
 
-    <label><h1>Select an Branch:</h1></label>
+    <label><h1>Accessible List Box</h1></label>
+    <label><h3>Select an Branch:</h3></label>
   
-    <span id="colors-list"></span>
+    <span id="branch"></span>
 
     <div role="listbox" id="listbox" aria-label="Branch">
+
         <br>
 
-        <div role="listbox"   class="colorlist">
+        <div role="listbox"   class="Branch">
 
             <div role="option" aria-selected="true" tabindex="0">IT</div>
 
