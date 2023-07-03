@@ -1,8 +1,5 @@
 const listbox = document.getElementById("listbox");
 
-
-
-
             listbox.addEventListener("keydown", function (event) {
 
                 const currentOption = event.target;
