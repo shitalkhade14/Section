@@ -1,50 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accessible Listbox</title>
-  <style>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessible Listbox</title>
+<style>
     body {
       background-color: rgb(27, 178, 171);
       text-align: center;
     }
+    .Branchlist [aria-selected="true"] {
+      border: 2px solid black;
 
-  </style>
+    }
+    div.focus {
+      border: 2px solid blue;
+    }
+
+</style>
 </head>
-
 <body>
+<label><h1>Accessible List Box</h1></label>
+<label><h3>Select a Branch:</h3></label>
+<span id="branch"></span>
+<div id="listbox">
+<br>
+<div role="listbox" aria-label="Branchlist" class="Branchlist">
+<div role="option" aria-selected="true" tabindex="0">IT</div>
+<div role="option" aria-selected="false" tabindex="-1">Computer</div>
+<div role="option" aria-selected="false" tabindex="-1">Electronics</div>
+<div role="option" aria-selected="false" tabindex="-1">Mechanical</div>
+<div role="option" aria-selected="false" tabindex="-1">Automobile</div>
+<div role="option" aria-selected="false" tabindex="-1">Civil</div>
+<div role="option" aria-selected="false" tabindex="-1">E&Tc</div>
+</div>
+<script>
 
-    <label><h1>Accessible List Box</h1></label>
-    <label><h3>Select an Branch:</h3></label>
-  
-    <span id="branch"></span>
+const listbox = document.getElementById("listbox");
+listbox.addEventListener("keydown", function (event) {
+    const currentOption = event.target;
+    if (event.key === "ArrowUp") {
+        event.preventDefault();
+        if (currentOption.previousElementSibling) {
+            const previousElement = currentOption.previousElementSibling;
+            previousElement.setAttribute("aria-selected", "true");
+            previousElement.setAttribute("tabindex", "0");
+            currentOption.setAttribute("aria-selected", "false");
+            currentOption.setAttribute("tabindex", "-1");
+            previousElement.focus();
+        } else {
+            const lastOption = listbox.lastElementChild;
+            lastOption.focus();
+        }
+    } else if (event.key === "ArrowDown") {
+        event.preventDefault();
+        if (currentOption.nextElementSibling) {
+            const nextElement = currentOption.nextElementSibling;
+            nextElement.setAttribute("aria-selected", "true");
+            nextElement.setAttribute("tabindex", "0");
+            currentOption.setAttribute("aria-selected", "false");
+            currentOption.setAttribute("tabindex", "-1");
+            nextElement.focus();
+        } else {
+            const firstOption = listbox.firstElementChild;
+            firstOption.focus();
+        }
+    }
+});
 
-    <div  id="listbox" >
+listbox.addEventListener("click", function (event) {
+    const clickedOption = event.target;
+    const currentOption = listbox.querySelector('[aria-selected="true"]');
+    if (clickedOption !== currentOption) {
+        currentOption.setAttribute("aria-selected", "false");
+        currentOption.setAttribute("tabindex", "-1");
+        clickedOption.setAttribute("aria-selected", "true");
+        clickedOption.setAttribute("tabindex", "0");
+        clickedOption.focus();
+        console.log(clickedOption)
+    }
+});
 
-        <br>
-
-        <div role="listbox" aria-label="Branchlist"  class="Branchlist">
-
-            <div role="option" aria-selected="true" tabindex="0">IT</div>
-
-            <div role="option" aria-selected="false" tabindex="-1">Computer</div>
-
-            <div role="option" aria-selected="false" tabindex="-1">Electronics</div>
-
-            <div role="option" aria-selected="false" tabindex="-1">Mechanical</div>
-
-            <div role="option" aria-selected="false" tabindex="-1">Automobile</div>
-
-            <div role="option" aria-selected="false" tabindex="-1">Civil</div>
-
-            <div role="option" aria-selected="false" tabindex="-1">E&Tc</div>
-
-        </div>
-
-        <script src="Listbox.js"></script>
-
+</script>
+</div>
 </body>
-
 </html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessible Listbox</title>
+<style>
+    body {
+      background-color: rgb(27, 178, 171);
+      text-align: center;
+    }
+</style>
+</head>
+<body>
+<label><h1>Accessible List Box</h1></label>
+<label><h3>Select a Branch:</h3></label>
+<span id="branch"></span>
+<div id="listbox">
+<br>
+<div role="listbox" aria-label="Branchlist" class="Branchlist">
+<div role="option" aria-selected="true" tabindex="0">IT</div>
+<div role="option" aria-selected="false" tabindex="-1">Computer</div>
+<div role="option" aria-selected="false" tabindex="-1">Electronics</div>
+<div role="option" aria-selected="false" tabindex="-1">Mechanical</div>
+<div role="option" aria-selected="false" tabindex="-1">Automobile</div>
+<div role="option" aria-selected="false" tabindex="-1">Civil</div>
+<div role="option" aria-selected="false" tabindex="-1">E&Tc</div>
+</div>
+<script>
+
+const listbox = document.getElementById("listbox");
+listbox.addEventListener("keydown", function (event) {
+    const currentOption = event.target;
+    if (event.key === "ArrowUp") {
+        event.preventDefault();
+        if (currentOption.previousElementSibling) {
+            const previousElement = currentOption.previousElementSibling;
+            previousElement.setAttribute("aria-selected", "true");
+            previousElement.setAttribute("tabindex", "0");
+            currentOption.setAttribute("aria-selected", "false");
+            currentOption.setAttribute("tabindex", "-1");
+            previousElement.focus();
+        } else {
+            const lastOption = listbox.lastElementChild;
+            lastOption.focus();
+        }
+    } else if (event.key === "ArrowDown") {
+        event.preventDefault();
+        if (currentOption.nextElementSibling) {
+            const nextElement = currentOption.nextElementSibling;
+            nextElement.setAttribute("aria-selected", "true");
+            nextElement.setAttribute("tabindex", "0");
+            currentOption.setAttribute("aria-selected", "false");
+            currentOption.setAttribute("tabindex", "-1");
+            nextElement.focus();
+        } else {
+            const firstOption = listbox.firstElementChild;
+            firstOption.focus();
+        }
+    }
+});
+
+listbox.addEventListener("click", function (event) {
+    const clickedOption = event.target;
+    const currentOption = listbox.querySelector('[aria-selected="true"]');
+    if (clickedOption !== currentOption) {
+        currentOption.setAttribute("aria-selected", "false");
+        currentOption.setAttribute("tabindex", "-1");
+        clickedOption.setAttribute("aria-selected", "true");
+        clickedOption.setAttribute("tabindex", "0");
+        clickedOption.focus();
+        // console.log(clickedOption)
+    }
+});
+
+listbox.addEventListener("mouseover", function (event) {
+    const targetOption = event.target;
+    if (targetOption.getAttribute("role") === "option") {
+        const currentOption = listbox.querySelector('[aria-selected="true"]');
+        if (targetOption !== currentOption) {
+            currentOption.setAttribute("aria-selected", "false");
+            currentOption.setAttribute("tabindex", "-1");
+            targetOption.setAttribute("aria-selected", "true");
+            targetOption.setAttribute("tabindex", "0");
+            targetOption.focus();
+        }
+    }
+  }); -->
