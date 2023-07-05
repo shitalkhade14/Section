@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessible Listbox</title>
+<style>
+    body {
+      background-color: rgb(27, 178, 171);
+      text-align: center;
+    }
+    .Branchlist [aria-selected="true"] {
+      border: 2px solid black;
+    }
+    div.focus {
+      border: 2px solid blue;
+    }
+</style>
+</head>
+<body>
+<label><h1>Accessible List Box</h1></label>
+<label><h3>Select a Branch:</h3></label>
+<span id="branch"></span>
+<div id="listbox">
+<br>
+<div role="listbox" aria-label="Branchlist" class="Branchlist" aria-activedescendant="option-it">
+<div role="option" id="option-it" aria-selected="true" >IT</div>
+<div role="option" id="option-computer" aria-selected="false" >Computer</div>
+<div role="option" id="option-electronics" aria-selected="false" >Electronics</div>
+<div role="option" id="option-mechanical" aria-selected="false" >Mechanical</div>
+<div role="option" id="option-automobile" aria-selected="false">Automobile</div>
+<div role="option" id="option-civil" aria-selected="false" >Civil</div>
+<div role="option" id="option-e&tc" aria-selected="false" >E&Tc</div>
+</div>
+<script>
+const listbox = document.getElementById("listbox");
+const options = Array.from(listbox.querySelectorAll('[role="option"]'));
+
+listbox.addEventListener("keydown", function (event) {
+    const currentOption = event.target;
+    const currentIndex = options.indexOf(currentoption);
+    
+    if (event.key === "ArrowUp") {
+        event.preventDefault();
+        const previousIndex = (currentIndex - 1 + options.length) % options.length;
+        const previousOption = options[previousIndex];
+        selectOption(previousOption);
+    } else if (event.key === "ArrowDown") {
+        event.preventDefault();
+        const nextIndex = (currentIndex + 1) % options.length;
+        const nextOption = options[nextIndex];
+        selectOption(nextOption);
+    }
+});
+
+listbox.addEventListener("click", function (event) {
+    const clickedOption = event.target;
+    selectOption(clickedOption);
+});
+
+function selectOption(option) {
+    options.forEach((opt) => {
+        const isSelected = opt === option;
+        opt.setAttribute("aria-selected", isSelected);
+        opt.setAttribute("tabindex", isSelected ? "0" : "-1");
+        opt.classList.toggle("focus", isSelected);
+    });
+    listbox.setAttribute("aria-activedescendant", option.id);
+    option.focus();
+}
+</script>
+</div>
+</body>
+</html>
