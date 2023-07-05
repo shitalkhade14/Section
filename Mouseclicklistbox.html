@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessible Listbox</title>
+  <link rel="stylesheet" type="text/css" href="Mouseclicklistbox.css">
+  <style>
+    body {
+      background-color: rgb(27, 178, 171);
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+    <label><h1>Accessible List Box</h1></label>
+    <!-- <label><h3>Select a Branch:</h3></label> -->
+
+    <div class="listbox-area">
+      <div>
+        <span id="ss_elem" class="listbox-label"><b>Choose Your Branch:</b></span>
+        <div id="ss_elem_list" tabindex="0" role="listbox" aria-labelledby="ss_elem">
+          <ul role="group" aria-labelledby="cat1">
+            <li role="presentation" id="cat1">Computer Science</li>
+            <li id="ss_elem_1" role="option">Computer and Network Security</li>
+            <li id="ss_elem_2" role="option">Computer Graphics</li>
+            <li id="ss_elem_3" role="option">Distributed Computing</li>
+            <li id="ss_elem_4" role="option">Robotics  and Cybernetics.</li>
+            <li id="ss_elem_5" role="option">Embedded Systems</li>
+          </ul>
+          <ul role="group" aria-labelledby="cat2">
+            <li role="presentation" id="cat2">IT</li>
+            <li id="ss_elem_6" role="option">Machine learning</li>
+            <li id="ss_elem_7" role="option">Data Science</li>
+            <li id="ss_elem_8" role="option">Signal Processing</li>
+          </ul>
+          <ul role="group" aria-labelledby="cat3">
+            <li role="presentation" id="cat3">Mechanical</li>
+            <li id="ss_elem_9" role="option">Engineering Mechanics</li>
+            <li id="ss_elem_10" role="option">Microtechnology</li>
+            <li id="ss_elem_11" role="option">Fluid Mechanics</li>
+          </ul>
+        </div>
+        <script src="Mouseclicklistbox.js"></script>
+        </body>
+        </html>    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- <span id="branch"></span>
+
+    <div id="listbox">
+        <br>
+        <div role="listbox" aria-label="Branchlist" class="Branchlist">
+            <div role="option" aria-selected="true" tabindex="-1">IT</div>
+            <div role="option" aria-selected="false" tabindex="-1">Computer</div>
+            <div role="option" aria-selected="false" tabindex="-1">Electronics</div>
+            <div role="option" aria-selected="false" tabindex="-1">Mechanical</div>
+            <div role="option" aria-selected="false" tabindex="-1">Automobile</div>
+            <div role="option" aria-selected="false" tabindex="-1">Civil</div>
+            <div role="option" aria-selected="false" tabindex="-1">E&amp;Tc</div>
+        </div>
+        <script src="Mouseclicklistbox.js"></script>
+
+
+    </body>
+    </html> -->

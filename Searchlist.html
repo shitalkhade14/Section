@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Search List</title>
+    <style>
+        .search-list {
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-width: 300px;
+        }
+
+        .item {
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .item.selected {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <label for="search-input">Search List:</label>
+    <input type="text" id="search-input" aria-controls="search-list" oninput="filterList()" />
+    <div role="list" id="search-list" aria-label="Search List" class="search-list">
+        <div role="option" class="item">Apple</div>
+        <div role="option" class="item">Banana</div>
+        <div role="option" class="item">Orange</div>
+        <div role="option" class="item">Grapes</div>
+        <div role="option" class="item">Mango</div>
+        <div role="option" class="item">Pineapple</div>
+    </div>
+
+    <script>
+        function filterList() {
+            const input = document.getElementById("search-input");
+            const filterValue = input.value.toLowerCase();
+            const items = document.querySelectorAll(".item");
+
+            items.forEach((item) => {
+                const itemText = item.innerText.toLowerCase();
+                const isVisible = itemText.includes(filterValue);
+
+                if (isVisible) {
+                    item.setAttribute("aria-hidden", "false");
+                    item.style.display = "block";
+                } else {
+                    item.setAttribute("aria-hidden", "true");
+                    item.style.display = "none";
+                }
+            });
+        }
+
+        const items = document.querySelectorAll(".item");
+
+        items.forEach((item) => {
+            item.addEventListener("click", () => {
+                // Perform the action when an item is selected (e.g., alert the selected item).
+                alert(item.innerText);
+            });
+
+            item.addEventListener("keydown", (event) => {
+                if (event.key === "Enter" || event.key === "Space") {
+                    event.preventDefault();
+                    // Perform the action when an item is selected (e.g., alert the selected item).
+                    alert(item.innerText);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
