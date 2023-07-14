@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Calculator </title>
+
+<style>
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto', sans-serif; 
+}
+
+.button{
+  width: 66px;
+  padding: 20px;
+  margin: 0 3px;
+  border: 2px solid black;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.row{
+  margin: 8px 0;
+}
+.row input{
+  width: 291px;
+  font-size: 20px;
+    margin: 0;
+    padding: 10px 0px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+</style>
+</head> 
+
+<body>
+  <h1 class="text-center">Welcome to Calculator</h1>
+    <div class="row">
+
+<label for="text-input">Enter text:</label>
+<input class="input" id="text-input" type="text" aria-label="Enter text">
+
+      <!-- <input class="input" type="text" aria-label="Enter text">  -->
+
+    </div>
+    <div class="row">
+      <button class="button">Clear</button>
+      <button class="button">%</button>
+    </div>
+    <div class="row">
+      <button class="button">7</button>
+      <button class="button">8</button>
+      <button class="button">9</button>
+      <button class="button">*</button>
+    </div>
+    <div class="row">
+      <button class="button">4</button>
+      <button class="button">5</button>
+      <button class="button">6</button>
+      <button class="button">/</button>
+    </div>
+    <div class="row">
+      <button class="button">1</button>
+      <button class="button">2</button>
+      <button class="button">3</button>
+      <button class="button">+</button>
+    </div>
+    <div class="row">
+      <button class="button">0</button>
+      <button class="button">.</button>
+      <button class="button">=</button>
+      <button class="button">-</button>
+    </div>
+  </div>
+  
+</body>
+<script>
+
+let string = "";
+let buttons = document.querySelectorAll('.button');
+Array.from(buttons).forEach((button)=>{
+  button.addEventListener('click', (e)=>{
+    if(e.target.innerHTML == '='){
+      string = eval(string);
+      document.querySelector('input').value = string;
+    }
+    else if(e.target.innerHTML == 'C'){
+      string = ""
+      document.querySelector('input').value = string;
+    }
+    else{ 
+    console.log(e.target)
+    string = string + e.target.innerHTML;
+    document.querySelector('input').value = string;
+      }
+  })
+})
+
+// keyboard navigation
+document.addEventListener('keydown', (e) => {
+  const key = e.key;
+  const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '+', '-', '*', '/', '%', 'Enter', 'Escape'];
+
+  if (validKeys.includes(key)) {
+    e.preventDefault();
+
+    const targetButton = Array.from(buttons).find((button) => button.innerHTML === key);
+    if (targetButton) {
+      targetButton.click();
+    } else if (key === 'Enter') {
+      const equalButton = Array.from(buttons).find((button) => button.innerHTML === '=');
+      if (equalButton) {
+        equalButton.click();
+      }
+    } else if (key === 'Escape') {
+      const clearButton = Array.from(buttons).find((button) => button.innerHTML === 'C');
+      if (clearButton) {
+        clearButton.click();
+      }
+    }
+  }
+});
+
+</script>
+</html>
